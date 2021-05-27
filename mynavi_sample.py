@@ -1,7 +1,11 @@
-import os
+﻿import os
 from selenium.webdriver import Chrome, ChromeOptions
 import time
 import pandas as pd
+import datetime
+from selenium.webdriver.chrome.webdriver import WebDriver
+from selenium.webdriver.remote.webelement import WebElement
+from webdriver_manager.chrome import ChromeDriverManager
 
 # Chromeを起動する関数
 
@@ -23,7 +27,7 @@ def set_driver(driver_path, headless_flg):
     options.add_argument('--incognito')          # シークレットモードの設定を付与
 
     # ChromeのWebDriverオブジェクトを作成する。
-    return Chrome(executable_path=os.getcwd() + "/" + driver_path, options=options)
+    return Chrome(ChromeDriverManager().install(), options=options)
 
 # main処理
 
